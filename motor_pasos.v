@@ -1,13 +1,13 @@
 module Motor_Pasos(
-	input clk, //Señal de reloj 50MHz
-	input inc, dec, en, //Pulsadores para cambio de velocidad y activación
+	input clk, //SeÃ±al de reloj 50MHz
+	input inc, dec, en, //Pulsadores para cambio de velocidad y activaciÃ³n
 	output [3:0]AB	//Salidas para motor a pasos
 );
-	//Declaración de registros (variables internas)
+	//DeclaraciÃ³n de registros (variables internas)
 	reg [31:0]cnt, frecuencia;
 	reg [3:0]edo, nextedo;
 	reg senal;
-	//Iniciallización de variables 
+	//IniciallizaciÃ³n de variables 
 	initial begin
 		frecuencia = 200_000;
 		edo = 1;
@@ -65,7 +65,7 @@ module Motor_Pasos(
 		case(en)
 			1: begin
 				case(edo)
-					1:	nextedo <= (edo == 1)? 2:1; //Estado 0001
+					1: nextedo <= (edo == 1)? 2:1; //Estado 0001
 					2: nextedo <= (edo == 2)? 4:2; //Estado 0010
 					4: nextedo <= (edo == 4)? 8:4; //Estado 0100
 					8: nextedo <= (edo == 8)? 1:8; //Estado 1000
